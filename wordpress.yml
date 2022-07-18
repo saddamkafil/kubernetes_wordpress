@@ -1,12 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+# Below name is the deployment name.
   name: wordpress-deployment
 spec:
+# Below No of replicas.
   replicas: 1
   selector:
     matchLabels:
+    
       app: wordpress
+      ## below is the pod templet
   template:
     metadata:
       labels:
