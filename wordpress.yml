@@ -1,16 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-# Below name is the deployment name.
-  name: wordpress-deployment
+  name: wordpress-deployment # deployment name.
 spec:
-# Below No of replicas.
-  replicas: 1
+  replicas: 1 # No of replicas.
   selector:
     matchLabels:
-    
-      app: wordpress
-      ## below is the pod templet
+      app: wordpress ## pod templet
   template:
     metadata:
       labels:
@@ -23,10 +19,10 @@ spec:
         - name: http-port
           containerPort: 80
         env:
-          - name: WORDPRESS_DB_PASSWORD
+          - name: WORDPRESS_DB_PASSWORD # variable name inside container
             valueFrom:
               secretKeyRef:
-                name: wordpress-secrets
-                key: db-password
-          - name: WORDPRESS_DB_HOST
-            value: wordpress-db
+                name: wordpress-secrets # Secret name (k get secrets)
+                key: db-password # Secret Key
+          - name: WORDPRESS_DB_HOST 
+            value: wordpress-db 
